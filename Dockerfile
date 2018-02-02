@@ -7,8 +7,8 @@ SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -yy upgrade && \
+	apt-get install -y apt-utils && \
 	apt-get install -y --no-install-recommends \
-	apt-utils \
 	xvfb libxrender1 libxtst6 libxi6 \
 	pulseaudio xfonts-base \
 	eterm fluxbox xterm \
@@ -23,7 +23,7 @@ RUN apt-get update && apt-get -yy upgrade && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN useradd -m -s /bin/bash -G pulse-access chrome
+RUN useradd --create-home -m -s /bin/bash -G pulse-access chrome
 	
 COPY rootfs/ /
 
