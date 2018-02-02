@@ -23,8 +23,6 @@ RUN apt-get update && apt-get -yy upgrade && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN rm /etc/xrdp/rsakeys.ini
-	
 RUN useradd -m -s /bin/bash -G pulse-access chrome
 	
 COPY rootfs/ /
