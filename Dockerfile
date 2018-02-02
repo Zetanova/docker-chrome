@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -yy upgrade && \
 	apt-get install -y --force-yes --no-install-recommends && \
+	apt-utils && \
 	xvfb libxrender1 libxtst6 libxi6 && \
 	pulseaudio xfonts-base && \
 	eterm fluxbox xterm && \
