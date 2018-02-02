@@ -26,12 +26,11 @@ RUN apt-get update && apt-get -yy upgrade && \
 RUN useradd --create-home -m -s /bin/bash -G pulse-access chrome
 	
 COPY rootfs/ /
-
-RUN chown -R chrome:chrome /home/chrome/.fluxbox	
 	
-RUN echo "startfluxbox" > /home/chrome/.xsession && \
-	chown chrome:chrome /home/chrome/.xsession
+RUN echo "startfluxbox" > /home/chrome/.xsession
 
+RUN chown -R chrome:chrome /home/chrome
+	
 RUN chmod +x /app-entrypoint.sh && \
 	chmod +x /run.sh
 	
