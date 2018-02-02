@@ -7,16 +7,16 @@ SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -yy upgrade && \
-	apt-get install -y --force-yes --no-install-recommends \
-	apt-utils && \
-	xvfb libxrender1 libxtst6 libxi6 && \
-	pulseaudio xfonts-base && \
-	eterm fluxbox xterm && \
-	supervisor nano net-tools tzdata && \
-	lxde x11vnc xvfb && \
-	gtk2-engines-murrine && \
-	chromium-browser && \
-	xrdp && \
+	apt-get install -y --no-install-recommends \
+	apt-utils \
+	xvfb libxrender1 libxtst6 libxi6 \
+	pulseaudio xfonts-base \
+	eterm fluxbox xterm \
+	supervisor nano net-tools tzdata \
+	lxde x11vnc xvfb \
+	gtk2-engines-murrine \
+	chromium-browser \
+	xrdp \
 	uuid-runtime && \
 	`# clean` && \
 	apt-get autoremove -y && \
