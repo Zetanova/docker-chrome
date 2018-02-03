@@ -1,4 +1,4 @@
-FROM ubuntu:lastest
+FROM ubuntu:latest
 MAINTAINER Zetanova <office@zetanova.eu>
  
 #USE bash
