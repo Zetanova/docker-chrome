@@ -1,4 +1,4 @@
-FROM ubuntu:rolling
+FROM ubuntu:lastest
 MAINTAINER Zetanova <office@zetanova.eu>
  
 #USE bash
