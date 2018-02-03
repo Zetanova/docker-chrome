@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:rolling
 MAINTAINER Zetanova <office@zetanova.eu>
  
 #USE bash
@@ -10,13 +10,12 @@ RUN apt-get update && apt-get -yy upgrade && \
 	apt-get install -y apt-utils && \
 	apt-get install -y --no-install-recommends \
 	xvfb libxrender1 libxtst6 libxi6 \
-	xfonts-base \
-	eterm fluxbox xterm \
+	pulseaudio xfonts-base \
+	fluxbox xterm \
 	supervisor nano net-tools tzdata \
-	lxde x11vnc xvfb \
-	gtk2-engines-murrine \
+	x11vnc \
 	chromium-browser \
-	xrdp xrdp-pulseaudio-installer \
+	xrdp \
 	uuid-runtime && \
 	`# clean` && \
 	apt-get autoremove -y && \
@@ -29,13 +28,15 @@ COPY rootfs/ /
 	
 RUN echo "startfluxbox" > /home/chrome/.xsession
 
-RUN mkdir ~/.x11vnc
-RUN x11vnc -storepasswd chrome ~/.x11vnc/passwd
+RUN mkdir /home/chrome/.x11vnc
+RUN x11vnc -storepasswd chrome /home/chrome/.x11vnc/passwd
 
 RUN chown -R chrome:chrome /home/chrome
 	
 RUN chmod +x /app-entrypoint.sh && \
 	chmod +x /run.sh
+	
+RUN rm /etc/xrdp/rsakeys.ini
 	
 #WORKDIR /app
 	
