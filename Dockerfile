@@ -36,7 +36,7 @@ RUN chown -R chrome:chrome /home/chrome
 RUN chmod +x /app-entrypoint.sh && \
 	chmod +x /run.sh
 	
-RUN rm /etc/xrdp/rsakeys.ini
+RUN rm -f /etc/xrdp/rsakeys.ini
 	
 #WORKDIR /app
 	
